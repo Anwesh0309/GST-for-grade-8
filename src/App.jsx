@@ -18,6 +18,10 @@ export function App() {
   const [done, setDone] = useState(false);
   const [storySlideInfo, setStorySlideInfo] = useState(null);
 
+  const handleStorySlideChange = useCallback((current, total) => {
+    setStorySlideInfo({ current, total });
+  }, []);
+
   useEffect(() => {
     stopNarration();
   }, [phase]);
@@ -112,7 +116,7 @@ export function App() {
         {phase === 'story' && (
           <StoryPhase
             muted={muted}
-            onSlideChange={useCallback((current, total) => setStorySlideInfo({ current, total }), [])}
+            onSlideChange={handleStorySlideChange}
             onDone={() => {
               setStorySlideInfo(null);
               setPhase('simulate');

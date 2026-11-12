@@ -25,7 +25,7 @@ const STORY_SLIDES = STORY_META.map((m, i) => ({
 
 export function StoryPhase({ muted, onDone, onSlideChange }) {
   const [slideIdx, setSlideIdx] = useState(0);
-  const slide = STORY_SLIDES[slideIdx];
+  const slide = STORY_SLIDES[slideIdx] || STORY_SLIDES[0];
 
   const onSlideChangeRef = useRef(onSlideChange);
   useEffect(() => {
